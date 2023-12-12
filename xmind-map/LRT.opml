@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+	<head>
+		<dateCreated>Tue Dec 12 2023 01:32:33 GMT+0100 (GMT+01:00)</dateCreated>
+		<dateModified>Tue Dec 12 2023 01:32:33 GMT+0100 (GMT+01:00)</dateModified>
+	</head>
+	<body>
+		<outline text="LRT">
+			<outline text="IMPORTS">
+				<outline text="ARGUMENTPARSER"></outline>
+				<outline text="TIME"></outline>
+				<outline text="NUMPY"></outline>
+				<outline text="SYS"></outline>
+				<outline text="CSV"></outline>
+				<outline text="PANDAS"></outline>
+				<outline text="MATHPLOTLIB"></outline>
+				<outline text="OS"></outline>
+				<outline text="COLORAMA"></outline>
+			</outline>
+			<outline text="FUNCTIONS">
+				<outline text="is_valid_csv()">
+					<outline text="ARG: chemin_fichier"></outline>
+					<outline text="RETURN: TRUE ou FALSE"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Tente de lire le fichier CSV spécifié par `chemin_fichier`."></outline>
+						<outline text="Vérifie les erreurs courantes (format CSV, existence du fichier, autorisations)."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Essayer d&apos;ouvrir le fichier à `chemin_fichier`."></outline>
+						<outline text="Utiliser `csv.reader` pour lire la première ligne, validant le format CSV."></outline>
+						<outline text="Gérer les erreurs potentielles telles que `csv.Error`, `FileNotFoundError` et `PermissionError`."></outline>
+					</outline>
+				</outline>
+				<outline text="load_dataset()">
+					<outline text="ARG: chemin_fichier"></outline>
+					<outline text="RETURN: X, y, labels"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Lit un fichier CSV à l&apos;aide de pandas."></outline>
+						<outline text="Extrait les caractéristiques (`X`), la variable cible (`y`) et les noms de colonnes."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Utiliser pandas pour lire le fichier CSV."></outline>
+						<outline text="Extraire les caractéristiques (`X`) et la variable cible (`y`)."></outline>
+						<outline text="Obtenir les noms de colonnes et créer un dictionnaire d&apos;étiquettes."></outline>
+					</outline>
+				</outline>
+				<outline text="compute_cost()">
+					<outline text="ARG: X, y, theta"></outline>
+					<outline text="RETURN: cost"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Lit un fichier CSV à l&apos;aide de pandas.Calcule la fonction de coût pour la régression linéaire."></outline>
+						<outline text="Utilise la fonction hypothèse et la somme des erreurs au carré."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Calculer l&apos;hypothèse en utilisant le produit scalaire de `X` et `theta`."></outline>
+						<outline text=" Calculer la somme des erreurs au carré entre l&apos;hypothèse et `y`."></outline>
+						<outline text="Multiplier par `1/2` et renvoyer le résultat."></outline>
+					</outline>
+				</outline>
+				<outline text="h_theta_func()">
+					<outline text="ARG: X, theta"></outline>
+					<outline text="RETURN: h_theta"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Calcule la fonction hypothèse pour la régression linéaire."></outline>
+						<outline text="Renvoie le produit scalaire de `X` et `theta`."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Calculer le produit scalaire de `X` et `theta`."></outline>
+						<outline text=" Renvoyer le résultat."></outline>
+					</outline>
+				</outline>
+				<outline text="batch_gradient_descent()">
+					<outline text="ARG: X, y, learning_rate, iterations, convergence_threshold"></outline>
+					<outline text="RETURN: theta, nb_iterations"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Implémente la descente de gradient par lots pour la régression linéaire."></outline>
+						<outline text="Met à jour itérativement les paramètres (`theta`) pour minimiser la fonction de coût."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Initialiser `theta` à zéro et définir le coût précédent à l&apos;infini."></outline>
+						<outline text=" Itérer jusqu&apos;à la convergence ou atteindre le nombre maximum d&apos;itérations."></outline>
+						<outline text="Mettre à jour chaque paramètre en utilisant la formule de descente de gradient."></outline>
+						<outline text="Vérifier la convergence en comparant les coûts actuel et précédent."></outline>
+						<outline text="Sortir si convergé ; sinon, mettre à jour le coût précédent."></outline>
+						<outline text="Renvoyer `theta` et le nombre d&apos;itérations."></outline>
+					</outline>
+				</outline>
+				<outline text="stochastic_gradient_descent()">
+					<outline text="ARG: X, y, learinig_rate, iterations, convergence_threshold"></outline>
+					<outline text="RETURN: theta, nb_iterations"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Implémente la descente de gradient stochastique pour la régression linéaire."></outline>
+						<outline text="Met à jour itérativement les paramètres (`theta`) en utilisant un point de données aléatoire."></outline>
+						<outline text="Renvoie les paramètres optimisés et le nombre d&apos;itérations."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Initialiser `theta` à zéro et définir le coût précédent à l&apos;infini."></outline>
+						<outline text="Itérer jusqu&apos;à la convergence ou atteindre le nombre maximum d&apos;itérations."></outline>
+						<outline text="Pour chaque point de données, mettre à jour chaque paramètre en utilisant la formule de descente de gradient stochastique."></outline>
+						<outline text="Vérifier la convergence en comparant les coûts actuel et précédent."></outline>
+						<outline text="Sortir si convergé ; sinon, mettre à jour le coût précédent."></outline>
+						<outline text="Renvoyer `theta` et le nombre d&apos;itérations."></outline>
+					</outline>
+				</outline>
+				<outline text="plot_data()">
+					<outline text="ARG: X, y, theta, nom_fichier, labels, dim, action"></outline>
+					<outline text="RETURN: NULL"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Choisi la fonction de tracé appropriée en fonction de la dimension."></outline>
+						<outline text="Enregistre ou affiche le graphique en fonction de l&apos;action spécifiée."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Vérifier la dimension et appeler `plot_data_2d` ou `plot_data_3d`."></outline>
+						<outline text="Enregistrer ou afficher le graphique en fonction de l&apos;action spécifiée."></outline>
+					</outline>
+				</outline>
+				<outline text="plot_data_2d()">
+					<outline text="ARG: X, y, theta, fichier, labels"></outline>
+					<outline text="RETURN:  plt"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Génère un graphique de dispersion 2D de l&apos;ensemble de données et de la droite de régression."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Graphique de dispersion des points de données en utilisant `X[:, 0]` et `y`."></outline>
+						<outline text="Tracer la droite de régression en utilisant `h_theta_func(X[:, 0], theta[0])`."></outline>
+						<outline text="Étiqueter les axes et ajouter une légende."></outline>
+						<outline text="Renvoie l&apos;objet du graphique."></outline>
+					</outline>
+				</outline>
+				<outline text="plot_data_3d()">
+					<outline text="X, y, theta, fichier, labels"></outline>
+					<outline text="RETURN: plt"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Génère un graphique de dispersion 3D de l&apos;ensemble de données et du plan de régression."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Graphique de dispersion des points de données 3D en utilisant `X[:, 0]`, `X[:, 1]` et `y`."></outline>
+						<outline text="Tracer le plan de régression en utilisant `theta[0] * x_mesh + theta[1] * y_mesh`."></outline>
+						<outline text=" Étiqueter les axes et ajouter une légende."></outline>
+						<outline text="Renvoie l&apos;objet du graphique."></outline>
+					</outline>
+				</outline>
+				<outline text="print_statistics()">
+					<outline text="ARG: y, predictions, iterations, theta, exec_time"></outline>
+					<outline text="RETURN: NULL"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="affiche un résumé des statistiques."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Calculer le coefficient de détermination en utilisant `calculate_r_squared`."></outline>
+						<outline text="Afficher les statistiques incluant le nombre total d&apos;itérations, `theta`, le temps d&apos;exécution et le coefficient de détermination."></outline>
+					</outline>
+				</outline>
+				<outline text="calculate_r_squared()">
+					<outline text="ARG: y, predictions"></outline>
+					<outline text="RETURN: coef"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Calcule le coefficient de détermination pour les prédictions du modèle."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Calculer la moyenne de `y`."></outline>
+						<outline text="Calculer la somme totale des carrés et la somme résiduelle des carrés."></outline>
+						<outline text="Renvoyer le coefficient de détermination."></outline>
+					</outline>
+				</outline>
+				<outline text="test_algo()">
+					<outline text="ARG: theta, labels, n"></outline>
+					<outline text="RETURN: NULL"></outline>
+					<outline text="FONCTIONALITÉ">
+						<outline text="Permet à l&apos;utilisateur d&apos;entrer des caractéristiques personnalisées et prédit la cible."></outline>
+					</outline>
+					<outline text="ALGORITHM">
+						<outline text="Inviter l&apos;utilisateur à entrer des caractéristiques."></outline>
+						<outline text="Calculer les prédictions en utilisant le modèle entraîné."></outline>
+						<outline text=" Afficher le résultat."></outline>
+					</outline>
+				</outline>
+			</outline>
+			<outline text="Main">
+				<outline text="FONCTIONNALITÉ">
+					<outline text="Analyse les arguments de la ligne de commande, charge les données et exécute la régression linéaire."></outline>
+				</outline>
+				<outline text="ALGORITHM">
+					<outline text="Initialiser l&apos;analyseur d&apos;arguments et définir les arguments de la ligne de commande."></outline>
+					<outline text="Analyser les arguments de la ligne de commande."></outline>
+					<outline text="Valider le fichier CSV."></outline>
+					<outline text="Charger l&apos;ensemble de données."></outline>
+					<outline text="Exécuter l&apos;algorithme de descente de gradient choisi."></outline>
+					<outline text="Afficher les statistiques."></outline>
+					<outline text="Éventuellement, exécuter un test de caractéristique personnalisée."></outline>
+					<outline text="Éventuellement, tracer les données."></outline>
+				</outline>
+			</outline>
+		</outline>
+	</body>
+</opml>
